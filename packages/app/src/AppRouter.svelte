@@ -5,14 +5,12 @@
   import { menu1 } from './menu';
 
 	let Route, params;
-	let uri = location.pathname;
+	export let path = '';
 
-	// let active;
-	// $: active = uri.split('/')[1] || 'home';
-
-	function draw(m, obj) {
-		Route = m.default;
-		params = obj || {};
+  $: {
+    if (Route) {
+      path = window.location.pathname;
+    }
   }
   
   function findComponent(obj) {

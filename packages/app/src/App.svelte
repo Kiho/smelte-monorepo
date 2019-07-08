@@ -58,7 +58,7 @@
     return showNavMobile.update(() => !$showNavMobile);
   }
 
-  $: path = ''; // $page.path;
+  let path = '';
 </script>
 
 <svelte:head>
@@ -122,7 +122,7 @@
       <hr />
     </NavigationDrawer>
 
-    <AppRouter />
+    <AppRouter bind:path />
 
   </main>
 {/if}
