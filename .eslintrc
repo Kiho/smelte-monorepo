@@ -12,7 +12,7 @@
     }
   },
   "rules": {
-    "prettier": true,
+    "prettier": 1,
     "prettier/prettier": [
       "error",
       {
