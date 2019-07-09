@@ -7,7 +7,7 @@ import svelte from 'rollup-plugin-svelte';
 import {terser} from 'rollup-plugin-terser';
 import replace from "rollup-plugin-replace";
 import { string } from "rollup-plugin-string";
-// import json from "rollup-plugin-json";
+import json from "rollup-plugin-json";
 // import config from "sapper/config/rollup.js";
 import getPreprocessor from "svelte-preprocess";
 import includePaths from "rollup-plugin-includepaths";
@@ -101,6 +101,9 @@ export default {
       }),
       string({
         include: "**/*.txt"
+      }),
+      json({
+        includes: "**./*.json",
       }),
       svelte({
          dev: dev,

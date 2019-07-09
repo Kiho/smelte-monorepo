@@ -5016,6 +5016,13 @@ escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-prettier@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.0.0.tgz#f429a53bde9fc7660e6353910fd996d6284d3c25"
+  integrity sha512-vDrcCFE3+2ixNT5H83g28bO/uYAwibJxerXPj+E7op4qzBCsAV36QfvdAyVOoNxKAH2Os/e01T/2x++V0LPukA==
+  dependencies:
+    get-stdin "^6.0.0"
+
 eslint-plugin-prettier@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.0.tgz#8695188f95daa93b0dc54b249347ca3b79c4686d"
@@ -5763,6 +5770,11 @@ get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
   integrity sha1-uWjGsKBDhDJJAui/Gl3zJXmkUP4=
+
+get-stdin@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
+  integrity sha512-jp4tHawyV7+fkkSKyvjuLZswblUtz+SQKzSWnBbii16BuZksJlU1wuBYXY75r+duh/llF1ur6oNwi+2ZzjKZ7g==
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -11901,10 +11913,10 @@ svelte-preprocess@^2.9.0:
     postcss-load-config "^2.0.0"
     strip-indent "^2.0.0"
 
-svelte-waypoint@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/svelte-waypoint/-/svelte-waypoint-0.1.0.tgz#40f7c0c0f666d6e22464b88f51a202497d5ad487"
-  integrity sha512-aEZ0a1TYLv1kSB+Cmx7LZExXs8wIvQ76uJk1o7ai8x2X+CFFLK1ceaGjRS7VXDQRg2byRxDL5DZjj526PXCGGw==
+svelte-waypoint@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/svelte-waypoint/-/svelte-waypoint-0.1.2.tgz#2b371231fabc7fbe70e271d96fe4b9da5b8eecb3"
+  integrity sha512-ttmToaOdshUqfH4EOwL8xkmPPP13sEh6j5R6yCo08aR5DrHTs/3bi/EwoioyBlC3O72+zevSsjfj1VPpkVZntA==
 
 svelte@^3.1.0, svelte@^3.6.3:
   version "3.6.3"

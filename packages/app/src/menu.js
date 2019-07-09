@@ -16,6 +16,7 @@ export const menu1 = [
   { to: "/components/menus", text: "Menus", component: components.Menus },
   { to: "/components/images", text: "Images", component: components.Images },
   { to: "/components/sliders", text: "Sliders", component: components.Sliders },
+  { to: "/components/data-tables", text: "DataTables", component: components.DataTables },
 ];
 
 export const menu2 = [

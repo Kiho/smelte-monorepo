@@ -61,6 +61,7 @@
     "sirv-cli": "^0.4.2",
     "smelte": "*",
     "svelte": "^3.6.5",
+    "svelte-waypoint": "^0.1.1",
     "svelte-preprocess": "^2.9.0",
     "svelte-preprocess-postcss": "^1.0.0",
     "svero": "^0.5.0",

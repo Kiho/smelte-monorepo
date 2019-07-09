@@ -1,6 +1,7 @@
 import Buttons from './buttons.svelte';
 import Cards from './cards.svelte';
 import Chips from './chips.svelte';
+import DataTables from './data-tables.svelte';
 import Dialogs from './dialogs.svelte';
 import Images from './images.svelte';
 import Index from './index.svelte';
@@ -16,7 +17,7 @@ import Tabs from './tabs.svelte';
 import TextFields from './text-fields.svelte';
 
 export {
-  Buttons, Cards, Chips, Dialogs, Images, Index, Lists, Menus, 
+  Buttons, Cards, Chips, Dialogs, DataTables, Images, Index, Lists, Menus, 
   NavigationDrawers, ProgressIndicators, SelectionControls,
   Selects, Sliders, Snackbars, Tabs, TextFields
 }

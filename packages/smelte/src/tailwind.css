@@ -52,7 +52,6 @@ hr {
   letter-spacing: 0.15px;
 }
 
-p,
 .body-1 {
   @apply text-base;
   letter-spacing: 0.5px;
@@ -61,6 +60,12 @@ p,
 .body-2 {
   @apply text-sm;
   letter-spacing: 0.25px;
+}
+
+.button {
+  letter-spacing: 0.0892857143em;
+  transition: box-shadow 0.2s ease;
+  @apply py-2 px-4 uppercase text-sm font-medium;
 }
 
 caption,
