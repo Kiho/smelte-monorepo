@@ -1,7 +1,7 @@
 <script>
   import {Chip, Snackbar, Button, Code} from "smelte/src/components";
-  import chip from "../examples/chip.txt";
-  import chipOutlined from "../examples/chip-outlined.txt";
+  import chip from "../../examples/chip.txt";
+  import chipOutlined from "../../examples/chip-outlined.txt";
 
   let closed = false;
   let clicked = false;

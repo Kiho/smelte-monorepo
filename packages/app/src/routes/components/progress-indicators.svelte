@@ -1,6 +1,6 @@
 <script>
   import {ProgressLinear,ProgressCircular,Code} from "smelte/src/components";
-  import indicators from "../examples/progress-indicators.txt";
+  import indicators from "../../examples/progress-indicators.txt";
 
   let progress = 0;
 

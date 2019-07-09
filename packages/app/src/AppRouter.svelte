@@ -1,5 +1,6 @@
 <script>
   import { Home, Color, Typography, Components } from "./routes";
+  import { Index } from './routes/components';
   import Navaid from 'navaid';
   import { onDestroy } from 'svelte';
   import { menu1 } from './menu';
@@ -14,10 +15,12 @@
   }
   
   function findComponent(obj) {
-    const key = `/components/${obj.id}`;
+    const key = `/components/${obj ? obj.id : ''}`;
     const item = menu1.find(x => x.to === key);
     if (item) {
       Route = item.component;
+    } else {
+      Route = Index;
     }
   }
 
@@ -25,7 +28,7 @@
 		.on('/', () => Route = Home)
 		.on('/color', () => Route = Color)
     .on('/typography', () => Route = Typography)
-    .on('/components', () => Route = Components)
+    .on('/components', () => findComponent())
 		.on('/components/:id', obj => findComponent(obj))
 		.listen();
 

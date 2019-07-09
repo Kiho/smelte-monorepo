@@ -1,6 +1,6 @@
 <script>
   import {Button, Menu, List, Code} from "smelte/src/components";
-  import menus from "../examples/menus.txt";
+  import menus from "../../examples/menus.txt";
 
   let open = false;
   let selected = "";

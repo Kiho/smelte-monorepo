@@ -1,6 +1,6 @@
 <script>
   import {Image, Code} from "smelte/src/components";
-  import images from "../examples/images.txt";
+  import images from "../../examples/images.txt";
 
   const range = [...new Array(50)];
 </script>

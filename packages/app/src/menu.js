@@ -1,4 +1,4 @@
-import * as components from './components';
+import * as components from './routes/components';
 
 export const menu1 = [
   { to: "/components/text-fields", text: "Text fields", component: components.TextFields },

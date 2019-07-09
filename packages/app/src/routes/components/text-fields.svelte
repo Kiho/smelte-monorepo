@@ -1,7 +1,7 @@
 <script>
   import {TextField, Code} from "smelte/src/components";
 
-  import textFields from "../examples/text-fields.txt";
+  import textFields from "../../examples/text-fields.txt";
 </script>
 
 <h6 class="mb-3 mt-6">Basic</h6>

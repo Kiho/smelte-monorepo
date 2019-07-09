@@ -1,7 +1,7 @@
 <script>
   import {Code, List, Icon} from "smelte/src/components";
-  import lists from "../examples/lists.txt";
-  import customLists from "../examples/custom-lists.txt";
+  import lists from "../../examples/lists.txt";
+  import customLists from "../../examples/custom-lists.txt";
 
   const listOneLine = [
     {

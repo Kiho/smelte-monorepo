@@ -1,6 +1,6 @@
 <script>
   import {Snackbar,Button,Code} from "smelte/src/components";
-  import snakebars from "../examples/snakebars.txt";
+  import snakebars from "../../examples/snakebars.txt";
 
   let showSnackbar = false;
 </script>

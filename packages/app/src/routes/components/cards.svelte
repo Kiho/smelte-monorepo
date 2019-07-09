@@ -1,6 +1,6 @@
 <script>
   import {Card, Button, Image, Code} from "smelte/src/components";
-  import card from "../examples/card.txt";
+  import card from "../../examples/card.txt";
 </script>
 
 <Card.Card>

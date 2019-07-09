@@ -1,8 +1,8 @@
 <script>
   import { Tabs, Tab, Code, Image } from "smelte/src/components";
 
-  import tabs from "../examples/tabs.txt";
-  import tabsWithContent from "../examples/tabs-with-content.txt";
+  import tabs from "../../examples/tabs.txt";
+  import tabsWithContent from "../../examples/tabs-with-content.txt";
 
   let loading = false;
 </script>

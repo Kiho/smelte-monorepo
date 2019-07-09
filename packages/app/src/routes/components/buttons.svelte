@@ -1,6 +1,6 @@
 <script>
   import { Button, Icon, Code } from "smelte/src/components";
-  import buttons from "../examples/buttons.txt";
+  import buttons from "../../examples/buttons.txt";
 </script>
 
 <h6 class="mb-3 mt-6">Basic</h6>

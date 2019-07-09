@@ -1,6 +1,6 @@
 <script>
   import {Select,Code} from "smelte/src/components";
-  import selects from "../examples/selects.txt";
+  import selects from "../../examples/selects.txt";
 
   let value1 = "";
   let value2 = "";
