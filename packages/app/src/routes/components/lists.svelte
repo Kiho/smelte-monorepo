@@ -1,5 +1,8 @@
 <script>
-  import {Code, List, Icon} from "smelte/src/components";
+  import Code from "components/Code";
+  import List from "components/List";
+  import Icon from "components/Icon";
+
   import lists from "../../examples/lists.txt";
   import customLists from "../../examples/custom-lists.txt";
 

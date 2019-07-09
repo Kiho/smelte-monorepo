@@ -1,5 +1,6 @@
 <script>
-  import {TextField, Code} from "smelte/src/components";
+  import TextField from "components/TextField";
+  import Code from "components/Code";
 
   import textFields from "../../examples/text-fields.txt";
 </script>
@@ -7,7 +8,7 @@
 <h6 class="mb-3 mt-6">Basic</h6>
 <TextField label="Test label" />
 <h6 class="mb-3 mt-6">With hint</h6>
-<TextField label="Test label" hint="Test hint" persistentHint />
+<TextField label="Test label" hint="Test hint" persistentHint color="blue" />
 <h6 class="mb-3 mt-6">With error</h6>
 <TextField label="Test label" error="Test error" />
 <h6 class="mb-3 mt-6">Outlined</h6>

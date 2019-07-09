@@ -1,5 +1,6 @@
 <script>
-  import {Select,Code} from "smelte/src/components";
+  import Select from "components/Select";
+  import Code from "components/Code";
   import selects from "../../examples/selects.txt";
 
   let value1 = "";
@@ -26,7 +27,7 @@
   .
 </p>
 <caption>Selected: {value2 || 'nothing'}</caption>
-<Select bind:value={value2} {label} {items} />
+<Select color="cyan" bind:value={value2} {label} {items} />
 
 <p>Select may be outlined.</p>
 <Select bind:value={value2} outlined {label} {items} />

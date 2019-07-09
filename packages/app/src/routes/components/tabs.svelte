@@ -1,5 +1,7 @@
 <script>
-  import { Tabs, Tab, Code, Image } from "smelte/src/components";
+  import Tabs, { Tab } from "components/Tabs";
+  import Code from "components/Code";
+  import Image from "components/Image";
 
   import tabs from "../../examples/tabs.txt";
   import tabsWithContent from "../../examples/tabs-with-content.txt";

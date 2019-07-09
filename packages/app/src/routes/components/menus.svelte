@@ -1,5 +1,9 @@
 <script>
-  import {Button, Menu, List, Code} from "smelte/src/components";
+  import Button from "components/Button";
+  import Menu from "components/Menu";
+  import List from "components/List";
+  import Code from "components/Code";
+
   import menus from "../../examples/menus.txt";
 
   let open = false;

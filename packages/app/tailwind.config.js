@@ -113,9 +113,6 @@ module.exports = {
     require("tailwindcss-elevation")(["hover"]),
     function({ addUtilities }) {
       return addUtilities({
-        [".label-transition"]: {
-          transition: "font-size 0.05s, line-height 0.1s"
-        },
         [".border-box"]: {
           boxSizing: "border-box"
         },
@@ -124,6 +121,9 @@ module.exports = {
         },
         [".transition"]: {
           transition: ".2s ease-in"
+        },
+        [".transition-fast"]: {
+          transition: ".1s"
         }
       });
     },

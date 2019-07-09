@@ -1,6 +1,8 @@
 <script>
-  import {Slider,Code,Checkbox} from "smelte/src/components";
-  
+  import Slider from "components/Slider";
+  import Code from "components/Code";
+  import Checkbox from "components/Checkbox";
+
   let value = 0;
   let value2 = 0;
   let disabled = false;

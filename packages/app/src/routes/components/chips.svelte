@@ -1,5 +1,9 @@
 <script>
-  import {Chip, Snackbar, Button, Code} from "smelte/src/components";
+  import Chip from "components/Chip";
+  import Snackbar from "components/Snackbar";
+  import Button from "components/Button";
+  import Code from "components/Code";
+
   import chip from "../../examples/chip.txt";
   import chipOutlined from "../../examples/chip-outlined.txt";
 

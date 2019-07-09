@@ -1,11 +1,24 @@
 <script>
-  import { Button, Icon, Code } from "smelte/src/components";
+  import Button from "components/Button";
+  import Icon from "components/Icon";
+  import Code from "components/Code";
+  
   import buttons from "../../examples/buttons.txt";
 </script>
 
 <h6 class="mb-3 mt-6">Basic</h6>
 <div class="py-2">
   <Button>Button</Button>
+</div>
+
+<h6 class="mb-3 mt-6">Light</h6>
+<div class="py-2">
+  <Button light>Button</Button>
+</div>
+
+<h6 class="mb-3 mt-6">Dark</h6>
+<div class="py-2">
+  <Button dark>Button</Button>
 </div>
 <h6 class="mb-3 mt-6">Block</h6>
 <div class="py-2">
@@ -29,7 +42,7 @@
 </div>
 <h6 class="mb-3 mt-6">Fab flat</h6>
 <div class="py-2">
-  <Button color="lime" icon="change_history" text light />
+  <Button color="lime" icon="change_history" text light flat />
 </div>
 
 <Code code={buttons} />
