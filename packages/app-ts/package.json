@@ -1,0 +1,48 @@
+{
+  "name": "typescript-svelte-starter",
+  "version": "0.1.1",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "refresh": "npm run del:formgrid && npm i",
+    "copy": "copyfiles ./index.html ./dist",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack && npm run copy",
+    "build:dev": "npm run clean && cross-env NODE_ENV=development webpack && npm run copy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve:api": "node server/index.js",
+    "serve:dev": "webpack-dev-server --hot --inline",
+    "dev": "concurrently \"npm run serve:dev\" \"npm run serve:api\"",
+    "start": "cross-env NODE_ENV=production node server/index.js"
+  },
+  "keywords": [
+    "svelte",
+    "typescript"
+  ],
+  "author": {
+    "name": "Kiho Chang",
+    "url": "https://github.com/kiho"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/requirejs": "^2.1.28",
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.0",
+    "copyfiles": "^1.2.0",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.1",
+    "dateformat": "^3.0.3",
+    "express": "^4.16.3",
+    "rimraf": "^2.6.2",
+    "roadtrip": "^0.6.1",
+    "svelte": "3.6.3",
+    "svelte-loader": "~2.13.0",
+    "ts-loader": "^5.3.2",
+    "typescript": "^3.5.2",
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "~4.35.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
