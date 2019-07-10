@@ -1,5 +1,5 @@
 <script>
-    import { onDestroy, onMount } from 'svelte';
+    import { onDestroy, onMount, createEventDispatcher } from 'svelte';
     import { fade } from "svelte/transition";
 
     // import AppBar from "components/AppBar";
@@ -28,45 +28,59 @@
         showNavMobile,
         breakpoint
     } from "../../stores.js";
-    // import AppRouter from './AppRouter.svelte';
+    import IndexHandler from '../../index.handler';
     
     import MenuComponent from '../navmenu/navmenu.svelte';
     import Routes from '../../routes';
 
-  // const { page } = stores();
+    const dispatch = createEventDispatcher();
+    // const { page } = stores();
 
     let selected = "";
     const bp = breakpoint();
     // $: path = $page.path;
     let path = '';
 
-    export let menu;
-
     let router;
+    export let currentPath = '';
 
     onMount(() => {
         const target = document.querySelector('#app');
         router = new Routes(target);
         // console.log('router', router);
+        IndexHandler.notify = routeData => {                
+            const path = routeData ? routeData.pathname : '';
+            currentPath = '/' + path;
+            console.log('NavMenu : routeData', routeData, path);
+        };
     });
 
     onDestroy(() => {
         // router.destroy()
     });
 
-    const topMenu = [];
+    function navigate(evt, to) {
+        if (evt && evt.preventDefault) evt.preventDefault()
+        // console.log('roadtrip.RouteData', roadtrip.RouteData);
+        if (item) {
+            dispatch('itemClick', event, item);
+        } else if (to) {            
+            roadtrip.goto(basePath + to);
+        }
+    }
+
+    export const menu = [
+      { to: "/", text: "Home" },
+      { to: "/employee", text: "Employee" },
+      { to: "/department", text: "Department" },
+      { to: "/about", text: "About" }
+    ];
+
+    export const topMenu = [
+      { to: "/about", text: "About" }
+    ];
 
 </script>
-
-<!-- <div class="container-fluid">
-    <div class="row">
-        <MenuComponent bind:this={menu} />
-    </div>    
-</div>
-<div class="container">
-    <div class="row" id="app"></div>
-</div> -->
-
 
 <AppBar>
   <a href="." class="px-2 md:px-8 flex items-center">
@@ -76,11 +90,11 @@
   <Spacer />
   <Tabs navigation items={topMenu} bind:selected={path} />
   <div class="md:hidden">
-    <Button
+    <!-- <Button
       icon="menu"
       small
       text
-      on:click={() => showNavMobile.set(!$showNavMobile)} />
+      on:click={() => showNavMobile.set(!$showNavMobile)} /> -->
   </div>
   <a href="https://github.com/matyunya/smelte" class="px-4">
     <img src="/github.png" alt="Github Smelte" width="24" height="24" />

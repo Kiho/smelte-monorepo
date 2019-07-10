@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "refresh": "npm run del:formgrid && npm i",
-    "copy": "copyfiles ./index.html ./dist",
+    "copy": "copyfiles -u 1 ./www/*.* ./dist",
     "build": "npm run clean && cross-env NODE_ENV=production webpack && npm run copy",
     "build:dev": "npm run clean && cross-env NODE_ENV=development webpack && npm run copy",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -39,7 +39,7 @@
     "rimraf": "^2.6.2",
     "roadtrip": "^0.6.1",
     "smelte": "*",
-    "svelte": "3.6.3",
+    "svelte": "^3.6.7",
     "svelte-loader": "~2.13.0",
     "ts-loader": "^5.3.2",
     "typescript": "^3.5.2",
