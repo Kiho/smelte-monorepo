@@ -36,7 +36,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
-    mainFields: ['svelte', 'module', 'main']
+    mainFields: ['svelte', 'module', 'main'],
+    alias: {
+        smelte: path.resolve(__dirname, '../smelte/src'),
+        components: path.resolve(__dirname, '../smelte/src/components'),
+        utils: path.resolve(__dirname, '../smelte/src/utils')
+    }
   },
   performance: {
     hints: false
