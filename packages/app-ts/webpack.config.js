@@ -1,9 +1,32 @@
 var path = require('path');
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const autoPreprocess = require('svelte-preprocess');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const isDevBuild = mode !== 'production';
+
+const cssConfig = {
+  test: /\.(sa|sc|c)ss$/,
+  exclude: /node_modules/,
+  use: [
+    'isomorphic-style-loader',
+    MiniCssExtractPlugin.loader,
+    'css-loader',
+    'postcss-loader',
+  ],
+};
+
+const sveltPreprocess = autoPreprocess({
+  postcss: true,
+  scss: false,
+  stylus: false,
+  typescript: false,
+  coffeescript: false,
+  less: false,
+  pug: false,
+});
 
 module.exports = {
   entry: {
@@ -17,9 +40,14 @@ module.exports = {
   mode,
   module: {
     rules: [
+      cssConfig,
       {
         test: /\.svelte$/,
-        use: { loader: 'svelte-loader', options: { dev: isDevBuild } },
+        use: { loader: 'svelte-loader', options: { 
+            dev: isDevBuild, 
+            preprocess: sveltPreprocess,
+          } 
+        },
         exclude: ['/node_modules/', '/index.svelte']
       },
       { 
