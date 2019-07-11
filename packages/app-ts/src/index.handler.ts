@@ -12,8 +12,8 @@ export default class IndexHandler {
 
     protected async importModules(pathname) {
         const modules: any = {
-            template: await import(`./components/app/page.svelte`),
-            data: await import(`./components/${pathname}/${pathname}`),
+            template: await import(`./app/app/page.svelte`),
+            data: await import(`./app/${pathname}/${pathname}`),
         }
         return allWithMapAsync(modules);
     }
@@ -25,7 +25,7 @@ export default class IndexHandler {
             });
         } else {
             if (this.path) {
-                current.data = { template: await import(`./components/${this.path}/${this.path}.svelte`) }; 
+                current.data = { template: await import(`./app/${this.path}/${this.path}.svelte`) }; 
             } else {
                 current.data = await this.importModules(current.pathname);
             }                     

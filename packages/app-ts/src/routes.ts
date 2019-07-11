@@ -1,6 +1,6 @@
 import roadtrip from 'roadtrip';
 import IndexHandler from './index.handler';
-import Home from './components/home/home.svelte';
+import Home from './app/home/home.svelte';
 import FormGrid from './formgrid/App.svelte';
 import { basePath } from './config';
 
