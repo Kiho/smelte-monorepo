@@ -12,7 +12,7 @@
 
 <Dialog bind:value={showModal}>
   <h5 slot="title">{title}</h5>
-	<div>
+	<div class="tall-dialog">
   	<slot></slot>
 	</div>
   <div slot="actions">
@@ -21,3 +21,9 @@
   </div>
 </Dialog>
 
+<style>
+	.tall-dialog {
+		width: 500px;
+		min-height: 300px;
+	}
+</style>
