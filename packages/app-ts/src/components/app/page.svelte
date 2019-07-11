@@ -46,35 +46,12 @@
 
     export function getList() {
         app.getList.call(instance);
-    }
-
-    // const app = Object.assign({}, appPage);
-    // const { getList, add, edit, save, close } = app;
-
-    // export default {
-    //     components: {
-    //         Modal,
-    //         FormGrid, 
-    //         DataGrid
-    //     },
-    //     oncreate () {
-    //         const { partial } = this.options;
-    //         const p = app.oncreate(this, partial);
-    //         partial.oncreate(p);          
-    //     },
-    //     methods: {
-    //         getList,
-    //         add,
-    //         edit,
-    //         save,
-    //         close
-    //     }
-    // }    
+    }  
 </script>
 
 <svelte:options accessors={true}/>
 <div class="container">
-    <h1>{title}</h1>
+    <h3>{title}</h3>
     <div class="row">
         <div class="col-md-12">
             <DataGrid bind:rows="{list}" bind:columns="{columndata}" edit={false} ></DataGrid>

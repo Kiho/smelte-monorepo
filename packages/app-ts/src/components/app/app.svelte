@@ -30,7 +30,8 @@
     } from "../../stores.js";
     import IndexHandler from '../../index.handler';
     
-    import MenuComponent from '../navmenu/navmenu.svelte';
+    import { basePath } from '../../routes';    
+    import roadtrip from 'roadtrip';
     import Routes from '../../routes';
 
     const dispatch = createEventDispatcher();
@@ -38,9 +39,6 @@
 
     let selected = "";
     const bp = breakpoint();
-    // $: path = $page.path;
-    let path = '';
-
     let router;
     export let currentPath = '';
 
@@ -88,13 +86,13 @@
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>
   </a>
   <Spacer />
-  <Tabs navigation items={topMenu} bind:selected={path} />
+  <Tabs navigation items={topMenu} bind:selected={currentPath} />
   <div class="md:hidden">
-    <!-- <Button
+    <Button
       icon="menu"
       small
       text
-      on:click={() => showNavMobile.set(!$showNavMobile)} /> -->
+      on:click={() => showNavMobile.set(!$showNavMobile)} />
   </div>
   <a href="https://github.com/matyunya/smelte" class="px-4">
     <img src="/github.png" alt="Github Smelte" width="24" height="24" />
@@ -123,7 +121,7 @@
 
           <a href={item.to}>
             <ListItem
-              selected={path.includes(item.to)}
+              selected={currentPath == item.to}
               {...item}
               dense
               navigation />

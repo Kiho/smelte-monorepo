@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "refresh": "npm run del:formgrid && npm i",
-    "copy": "copyfiles -u 1 ./www/*.* ./dist",
+    "copy": "copyfiles -u 1 ./static/*.* ./dist",
     "build": "npm run clean && cross-env NODE_ENV=production webpack && npm run copy",
     "build:dev": "npm run clean && cross-env NODE_ENV=development webpack && npm run copy",
     "test": "echo \"Error: no test specified\" && exit 1",
