@@ -1,81 +1,23 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
+  import Dialog from "components/Dialog";
+  import Button from "components/Button";
 
+  export let showModal = false;
 	const dispatch = createEventDispatcher();
 
 	export let modalSize = 'default';
 	export let title = '';
 </script>
 
-<div class='modal-background' on:click='{() => dispatch("close")}'></div>
-
-<div class='modal-container modal-{modalSize}'>
-    <div class="modal-header">
-        <h2 class="modal-title">{title}</h2>
-    </div>
-    <div class="modal-body">
-		<div>
-			<slot></slot>
-		</div>
+<Dialog bind:value={showModal}>
+  <h5 slot="title">{title}</h5>
+	<div>
+  	<slot></slot>
 	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary pull-right" on:click='{() => dispatch("close")}'>Close</button>
-		<button type="button" class="btn btn-primary pull-right" on:click='{() => dispatch("save")}'>Save Changes</button>
-	</div>
-</div>
+  <div slot="actions">
+		<Button on:click='{() => dispatch("close")}'>Close</Button>
+		<Button on:click='{() => dispatch("save")}'>Save Changes</Button>
+  </div>
+</Dialog>
 
-<style>
-	.modal-footer {
-    padding: 10px 15px 0;
-  }
-
-	.modal-footer .btn-primary {
-    margin-right: 10px
-  }
-
-  .modal-header,
-	.modal-body {
-		padding: 15px 50px 15px 50px;
-	}
-
-	.modal-background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0,0,0,0.3);
-	}
-
-	.modal-container {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		overflow: auto;
-		transform: translate(-50%,-50%);
-		padding: 1em;
-		width: calc(100vw - 4em);
-		max-height: calc(100vh - 4em);
-		border-radius: 0.2em;
-		background: white;
-	}
-
-	.modal-small {
-		max-width: 32em;
-	}
-
-	.modal-default {
-		max-width: 48em;
-	}
-
-	.modal-large {
-		max-width: 64em;
-	}
-
-	button {
-		display: block;
-	}
-	.invalid-feedback {
-		color: red;
-	}
-</style>

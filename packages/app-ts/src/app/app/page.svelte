@@ -1,5 +1,7 @@
 <script>
-    import { afterUpdate, onMount } from 'svelte';
+    import { afterUpdate, onMount } from 'svelte';    
+    import { Button } from "smelte/components";
+
     import { DataGrid, FormGrid } from '../../formgrid';
     import Modal from '../app/modal.svelte';
     import appPage from '../../services/appPage';
@@ -10,7 +12,7 @@
     export let instance = null;
     export let list = [];
     export let showModal = false;
-    export let selectedItem = null;
+    export let selectedItem = {};
     export let path = '';
     export let fielddata = [];
     export let form = null;
@@ -50,21 +52,20 @@
 </script>
 
 <svelte:options accessors={true}/>
-<div class="container">
-    <h3>{title}</h3>
-    <div class="row">
-        <div class="col-md-12">
-            <DataGrid bind:rows="{list}" bind:columns="{columndata}" edit={false} ></DataGrid>
-            <button type="button" class="btn btn-primary" on:click='{add}'>Add New</button>
-        </div>
+
+<div>
+    <h4 class="capitalize pb-8">{title}</h4>
+    <div class="py-2">
+        <DataGrid bind:rows="{list}" bind:columns="{columndata}" edit={false} ></DataGrid>
     </div>
+    <div class="py-2">
+        <Button on:click='{add}'>Add New</Button>
+    </div> 
     <div>
-        {#if showModal}
-            <Modal on:close="{close}" on:save="{(e) => save(selectedItem, e)}" title={selectedItem.name}>
-                <div class=form-group bind:this="{form}">
-                    <FormGrid columns={fielddata} bind:item="{selectedItem}" ></FormGrid> 
-                </div>                     
-            </Modal>
-        {/if}
+        <Modal bind:showModal on:close="{close}" on:save="{(e) => save(selectedItem, e)}" title={selectedItem ? selectedItem.name : ''}>
+            <div class=form-group bind:this="{form}">
+                <FormGrid columns={fielddata} bind:item="{selectedItem}" ></FormGrid> 
+            </div>                     
+        </Modal>
     </div>
 </div>

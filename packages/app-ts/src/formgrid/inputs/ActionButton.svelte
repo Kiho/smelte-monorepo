@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { Button } from "smelte/components";
 
     const dispatch = createEventDispatcher();
 
@@ -8,4 +9,4 @@
     export let value = false;
 </script>
 
-<button class="btn btn-{className}" on:click="{event => dispatch('click', event)}">{label}</button>
+<Button  on:click="{event => dispatch('click', event)}">{label}</Button>

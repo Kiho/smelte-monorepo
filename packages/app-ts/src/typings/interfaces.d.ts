@@ -10,7 +10,7 @@ interface IField {
     required?: boolean;
     row: number;
     col: string;
-    className?: string;
+    class?: string;
     action?: (row) => void;
     optionList?: any[];
 }
@@ -21,7 +21,8 @@ interface IColumn {
     component: string;
     readOnly?: boolean;
     required?: boolean;
-    className?: string;
+    sortable?: boolean;
+    class?: string;
     action?: (row) => void;
 }
 

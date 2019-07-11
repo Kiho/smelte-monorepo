@@ -21,12 +21,12 @@
     import { ProgressLinear } from "smelte/components";
 
     import {
-        right,
-        elevation,
-        persistent,
-        showNav,
-        showNavMobile,
-        breakpoint
+      right,
+      elevation,
+      persistent,
+      showNav,
+      showNavMobile,
+      breakpoint
     } from "../../stores.js";
     import IndexHandler from '../../index.handler';
     

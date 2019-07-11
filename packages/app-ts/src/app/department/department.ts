@@ -29,7 +29,8 @@ export const actionColumn: IColumn = {
     label: 'Edit', 
     field: 'field',
     component: 'action',
-    className: 'secondary',
+    class: 'secondary',
+    sortable: false,
 } 
 columndata.push(actionColumn);
 
