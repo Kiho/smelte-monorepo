@@ -1,8 +1,11 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount } from 'svelte';    
+    import TextField from "components/TextField";
+    import Select from "components/Select";
+
     import {
-        TextInput,
-        SelectInput,
+        // TextInput,
+        // SelectInput,
         NumberInput,
         CurrencyInput,
         MaskedInput,
@@ -27,7 +30,7 @@
 
     export let fieldtype;
     $: {
-        let ft = TextInput;
+        let ft = TextField;
         if (settings.component) {
             switch (settings.component.toLowerCase()) {
                 case 'currency':
@@ -40,7 +43,7 @@
                     ft = NumberInput;
                     break;
                 case 'select':
-                    ft = SelectInput;
+                    ft = Select;
                     break;
             }
         }

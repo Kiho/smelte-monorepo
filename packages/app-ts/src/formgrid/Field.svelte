@@ -41,7 +41,7 @@
     }
 </script>
 
-<div class="form-group row">
+<!-- <div class="form-group row">
     <label class="col-4 col-form-label" for={uuid}>{label}</label>
     <div class="col-8">
         <div class="form-group">
@@ -53,6 +53,15 @@
             {/if}
         </div>       
     </div>
+</div> -->
+
+<div class="form-group">
+    <svelte:component this="{fieldtype}" {...props} bind:value bind:submit bind:error {uuid} />
+    {#if submit && error}
+    <div class="invalid-feedback">
+        {message}
+    </div>
+    {/if}
 </div>
 
 <style>
