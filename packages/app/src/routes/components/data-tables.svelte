@@ -1,7 +1,7 @@
 <script>
   import DataTable from "components/DataTable";
   import Code from "components/Code";
-  import table from "../../examples/table.txt";
+  import table from "examples/table.txt";
 
   import data from "./data.json";
 </script>

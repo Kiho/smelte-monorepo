@@ -2,7 +2,7 @@
   import Dialog from "components/Dialog";
   import Button from "components/Button";
   import Code from "components/Code";
-  import dialog from "../../examples/dialog.txt";
+  import dialog from "examples/dialog.txt";
 
   let showDialog = false;
 </script>

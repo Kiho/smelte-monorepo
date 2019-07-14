@@ -4,7 +4,7 @@
   import List from "components/List";
   import Code from "components/Code";
 
-  import menus from "../../examples/menus.txt";
+  import menus from "examples/menus.txt";
 
   let open = false;
   let selected = "";

@@ -2,7 +2,7 @@
   import { TextField } from "smelte/src/components";
   import { Code } from "smelte/src/components";
 
-  import ripple from "../examples/ripple.txt";
+  import ripple from "examples/ripple.txt";
 </script>
 
 <h4 class="pb-8">Color helper classes</h4>

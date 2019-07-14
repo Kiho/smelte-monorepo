@@ -3,8 +3,8 @@
   import Code from "components/Code";
   import Image from "components/Image";
 
-  import tabs from "../../examples/tabs.txt";
-  import tabsWithContent from "../../examples/tabs-with-content.txt";
+  import tabs from "examples/tabs.txt";
+  import tabsWithContent from "examples/tabs-with-content.txt";
 
   let loading = false;
 </script>

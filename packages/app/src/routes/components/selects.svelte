@@ -1,7 +1,7 @@
 <script>
   import Select from "components/Select";
   import Code from "components/Code";
-  import selects from "../../examples/selects.txt";
+  import selects from "examples/selects.txt";
 
   let value1 = "";
   let value2 = "";

@@ -2,7 +2,7 @@
   import TextField from "components/TextField";
   import Code from "components/Code";
 
-  import textFields from "../../examples/text-fields.txt";
+  import textFields from "examples/text-fields.txt";
 </script>
 
 <h6 class="mb-3 mt-6">Basic</h6>

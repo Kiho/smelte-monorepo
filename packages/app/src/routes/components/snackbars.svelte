@@ -2,7 +2,7 @@
   import Snackbar from "components/Snackbar";
   import Button from "components/Button";
   import Code from "components/Code";
-  import snakebars from "../../examples/snakebars.txt";
+  import snakebars from "examples/snakebars.txt";
 
   let showSnackbar = false;
 </script>

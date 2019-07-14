@@ -2,7 +2,7 @@
   import Image from "components/Image";
   import Code from "components/Code";
 
-  import images from "../../examples/images.txt";
+  import images from "examples/images.txt";
 
   const range = [...new Array(50)];
 </script>

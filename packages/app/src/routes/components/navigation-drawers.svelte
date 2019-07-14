@@ -4,7 +4,7 @@
 
   import { right, elevation, persistent, showNav } from "../../stores.js";
 
-  import drawers from "../../examples/navigation-drawers.txt";
+  import drawers from "examples/navigation-drawers.txt";
 </script>
 
 <Checkbox

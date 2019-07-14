@@ -4,8 +4,8 @@
   import Button from "components/Button";
   import Code from "components/Code";
 
-  import chip from "../../examples/chip.txt";
-  import chipOutlined from "../../examples/chip-outlined.txt";
+  import chip from "examples/chip.txt";
+  import chipOutlined from "examples/chip-outlined.txt";
 
   let closed = false;
   let clicked = false;

@@ -5,7 +5,7 @@
 
   import Code from "components/Code";
 
-  import card from "../../examples/card.txt";
+  import card from "examples/card.txt";
 </script>
 
 <Card.Card>

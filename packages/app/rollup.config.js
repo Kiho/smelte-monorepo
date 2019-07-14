@@ -117,7 +117,7 @@ export default {
       }),
       resolve({mainFields: ['svelte', 'module', 'main']}),
       commonjs(),
-      includePaths({ paths: ["../smelte/src", "../smelte", "./src", "./"] }),
+      includePaths({ paths: ["../smelte/src", "../smelte", "./"] }),
       postcss({
           extract: true,
           plugins: postcssPlugins(!dev),
