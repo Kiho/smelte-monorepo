@@ -1,4 +1,9 @@
 # Smelte
+[![license](https://img.shields.io/npm/l/smelte.svg)](https://img.shields.io/npm/l/smelte.svg)
+[![zip size](https://img.shields.io/bundlephobia/minzip/smelte.svg)](https://img.shields.io/bundlephobia/minzip/smelte.svg)
+[![downloads](https://img.shields.io/npm/dm/smelte.svg)](https://img.shields.io/npm/dm/smelte.svg)
+[![version](https://img.shields.io/npm/v/smelte.svg)](https://img.shields.io/npm/v/smelte.svg)
+
 [Demo](https://smelte.netlify.com/)
 
 Smelte is a UI framework built on top of Svelte and Tailwind CSS using Material Design spec (hence the name).
@@ -39,6 +44,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Card
 - [x] Slider
 - [x] Proper customization via class props
+- [x] Data table
 - [ ] Autocomplete (sort of there but buggy)
 - [ ] Tooltip
 - [ ] Revise events (on:change, on:focus, on:input...)
@@ -52,7 +58,7 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [x] Image lazy loading
 - [x] Now SSR deployment
 - [x] Color palette generator
-- [x] Improve Purge CSS (right now dynamic classes need to be whitelisted manually)
+- [x] Improve Purge CSS
 - [x] Theming
 - [x] Image processing (done [here](https://github.com/matyunya/svelte-image))
 - [x] Svelte template (without Sapper)
@@ -61,5 +67,4 @@ Smelte is still in very early stage, so please feel free to submit any feedback.
 - [ ] Document API
 - [ ] JS ripple animation
 - [ ] IE 11 support
-- [ ] Scaffoldable CLI version
 - [ ] CDN version

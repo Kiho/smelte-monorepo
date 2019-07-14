@@ -1,5 +1,17 @@
 # Smelte changelog
 
+## 0.0.11
+* Finish autocomplete
+* Add focus events to selects
+
+## 0.0.10
+* Fix nav drawer on mobile
+
+
+## 0.0.9
+* Expose more classes
+* Publish components to npm
+
 ## 0.0.8
 * Make svelte usable without sapper
 * Create svelte template without sapper

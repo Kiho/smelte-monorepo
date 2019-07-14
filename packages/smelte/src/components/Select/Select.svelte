@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onMount } from "svelte";
   import { fly } from "svelte/transition";
   import { quadOut, quadIn } from "svelte/easing";
   import List from "../List/List.svelte";
@@ -29,6 +29,8 @@
 
   let showList = false;
   let filteredItems = items;
+  let itemsProcessed = [];
+  let selectedLabel = '';
 
   const props = {
     outlined,
@@ -47,9 +49,17 @@
     appendBaseClasses,
   };
 
-  $: itemsProcessed = items.map(i => typeof i !== 'object'
+  function process(it) {
+    return it.map(i => typeof i !== 'object'
      ? ({ value: i, text: i })
      : i);
+  }
+
+  $: itemsProcessed = process(items);
+  
+  onMount(() => {
+    selectedLabel = getLabel(value);
+  })
 
   const inProps = { y: 10, duration: 50, easing: quadIn };
   const outProps = { y: -10, duration: 100, easing: quadOut, delay: 50 };
@@ -58,8 +68,6 @@
   function getLabel(value) {
     return value ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
   }
-
-  $: selectedLabel = getLabel(value);
 
   function filterItems({ target }) {
     filteredItems = itemsProcessed.filter(i =>
@@ -101,6 +109,7 @@
           select
           items={filteredItems}
           on:change={({ detail }) => {
+            selectedLabel = getLabel(detail);
             dispatch('change', detail);
           }} />
       </div>
