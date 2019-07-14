@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { Button } from "smelte/components";
+    import { Button } from "smelte";
 
     const dispatch = createEventDispatcher();
 

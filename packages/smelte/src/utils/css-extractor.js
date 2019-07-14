@@ -1,5 +1,5 @@
-import { parse, walk } from "svelte/compiler";
-import path from "path";
+const { parse, walk } = require("svelte/compiler");
+const path = require("path");
 
 function flatten(arr) {
   return arr.reduce(function(flat, toFlatten) {
@@ -15,13 +15,21 @@ function getProp(node, attr) {
   return (node.attributes.find(a => a.name === attr) || {}).value;
 }
 
+function getComponent(name) {
+  try {
+    return require(path.resolve("./src/components", name, "variants.js"));
+  } catch (e) {
+    return {
+      all: color => [`text-${color}-500`]
+    };
+  }
+}
+
 const defs = {};
 
 function classesPerComponent(colors) {
   return Object.keys(colors).reduce((acc, component) => {
-    const def =
-      defs[component] ||
-      require(path.resolve("./src/components", component, "variants.js"));
+    const def = defs[component] || getComponent(component);
 
     defs[component] = def;
 
@@ -33,7 +41,7 @@ function classesPerComponent(colors) {
   }, []);
 }
 
-export default function extractor(content) {
+module.exports = function extractor(content) {
   let ast;
   const usedColors = {};
 
@@ -65,4 +73,4 @@ export default function extractor(content) {
     ...fromClasses.map(c => c.replace("class:", "")),
     ...flatten(classesPerComponent(usedColors))
   ];
-}
+};

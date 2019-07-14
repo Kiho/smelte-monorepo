@@ -39,7 +39,7 @@
     "rimraf": "^2.6.2",
     "roadtrip": "^0.6.1",
     "smelte": "*",
-    "svelte": "^3.6.7",
+    "svelte": "3.6.5",
     "svelte-loader": "~2.13.0",
     "ts-loader": "^5.3.2",
     "typescript": "^3.5.2",

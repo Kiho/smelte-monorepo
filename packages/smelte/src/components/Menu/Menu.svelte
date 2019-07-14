@@ -2,12 +2,14 @@
   import { createEventDispatcher } from "svelte";
   import { fly } from "svelte/transition";
   import { quadOut, quadIn } from "svelte/easing";
-  import List from "components/List";
-  import TextField from "components/TextField";
+  import List from "../List";
+  import TextField from "../TextField";
 
   export let items = [];
   export let open = false;
   export let value = null;
+  export let wrapperClasses = "cursor-pointer relative inline-flex";
+  export let listWrapperClasses = "absolute w-full bottom-0";
 
   const dispatch = createEventDispatcher();
 
@@ -18,10 +20,10 @@
 <svelte:window on:click={() => (open = false)} />
 
 <div>
-  <div class="cursor-pointer relative inline-flex" on:click|stopPropagation>
+  <div class={wrapperClasses} on:click|stopPropagation>
     <slot name="activator" />
     {#if open}
-      <div class="absolute w-full bottom-0">
+      <div class={listWrapperClasses}>
         <List
           bind:value
           select

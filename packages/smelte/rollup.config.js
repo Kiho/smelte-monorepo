@@ -15,68 +15,10 @@ const mode = process.env.NODE_ENV;
 const dev = mode === "development";
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const postcssPlugins = (purge = false) => {
-  return [
-    require("postcss-import")(),
-    require("postcss-url")(),
-    require("postcss-nesting")(),
-    require("postcss-input-range")(),
-    require("postcss-custom-properties")({
-      importFrom: "smelte/src/utils/cssVars.js"
-    }),
-    require("autoprefixer")(),
-    require("tailwindcss")("./tailwind.config.js"),
-    purge &&
-      require("cssnano")({
-        preset: "default"
-      }),
-    purge &&
-      require("@fullhuman/postcss-purgecss")({
-        content: ["./**/*.svelte"],
-        extractors: [
-          {
-            extractor: content => {
-              const fromClasses = content.match(/class:[A-Za-z0-9-_]+/g) || [];
-
-              return [
-                ...(content.match(/[A-Za-z0-9-_:\/]+/g) || []),
-                ...fromClasses.map(c => c.replace("class:", ""))
-              ];
-            },
-            extensions: ["svelte"]
-          }
-        ],
-        whitelist: [
-          "html",
-          "body",
-          "ripple-gray",
-          "ripple-primary",
-          "ripple-white",
-          "cursor-pointer",
-          "navigation:hover",
-          "navigation.selected",
-          "outline-none",
-          "text-xs",
-          "transition"
-        ],
-        whitelistPatterns: [
-          /bg-gray/,
-          /text-gray/,
-          /yellow-a200/,
-          /language/,
-          /namespace/,
-          /token/,
-          // These are from button examples, infer required classes.
-          /(bg|ripple|text|border)-(red|teal|yellow|lime|primary)-(400|500|200|50)$/
-        ]
-      })
-  ].filter(Boolean);
-};
-
 const preprocess = getPreprocessor({
   transformers: {
     postcss: {
-      plugins: postcssPlugins()
+      plugins: require("./postcss.config.js")()
     }
   }
 });
@@ -89,6 +31,9 @@ export default {
       replace({
         "process.browser": true,
         "process.env.NODE_ENV": JSON.stringify(mode)
+      }),
+      json({
+        includes: "**./*.json"
       }),
       string({
         include: "**/*.txt"
@@ -122,7 +67,8 @@ export default {
             [
               "@babel/preset-env",
               {
-                targets: "> 0.25%, ie >= 11, not dead"
+                targets: "> 0.25%"
+                // , ie >= 11, not dead
               }
             ]
           ],
@@ -152,7 +98,9 @@ export default {
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode)
       }),
-      json(),
+      json({
+        includes: "**./*.json"
+      }),
       svelte({
         generate: "ssr",
         dev,
@@ -165,7 +113,7 @@ export default {
       includePaths({ paths: ["./src", "./"] }),
       commonjs(),
       postcss({
-        plugins: postcssPlugins(!dev),
+        plugins: require("./postcss.config.js")(!dev),
         extract: path.resolve(__dirname, "./static/global.css")
       })
     ],

@@ -1,6 +1,6 @@
 <script>
   // import Button from "./Button.svelte";
-  import { Button } from "smelte/src/components";
+  import { Button } from "smelte";
 </script>
 
 <main>
