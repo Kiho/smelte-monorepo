@@ -4,9 +4,9 @@
   "description": "Smelte and Svelte Monorepo POC",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "app": "cd packages/app && npm run dev",
-    "dev": "cd packages/app-ts && npm run dev",
+  "scripts": {    
+    "app": "cd packages/app-ts && npm run dev",
+    "dev": "cd packages/app && npm run dev",
     "fix:check": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --check **/*.{js,svelte,css,html}",
     "fix:write": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write **/*.{js,svelte,css,html}",
     "make": "node ./bin/make.js",
