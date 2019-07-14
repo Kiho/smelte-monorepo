@@ -2,10 +2,11 @@
   import { createEventDispatcher } from "svelte";
   import { fly } from "svelte/transition";
   import { quadOut, quadIn } from "svelte/easing";
-  import List from "components/List/List.svelte";
-  import TextField from "components/TextField";
+  import List from "../List/List.svelte";
+  import TextField from "../TextField";
 
   export let items = [];
+  export let c = "";
   export let value = "";
   export let text = "";
   export let label = "";
@@ -17,6 +18,14 @@
   export let append = "";
   export let persistentHint = false;
   export let autocomplete = false;
+  export let noUnderline = false;
+  export let wrapperClasses = "cursor-pointer relative pb-4";
+  export let wrapperBaseClasses = i => i;
+  export let appendBaseClasses = i => i;
+
+  export let add = "";
+  export let remove = "";
+  export let replace = "";
 
   let showList = false;
   let filteredItems = items;
@@ -29,21 +38,31 @@
     error,
     append,
     persistentHint,
-    color
+    color,
+    add,
+    remove,
+    replace,
+    noUnderline,
+    wrapperBaseClasses,
+    appendBaseClasses,
   };
+
+  $: itemsProcessed = items.map(i => typeof i !== 'object'
+     ? ({ value: i, text: i })
+     : i);
 
   const inProps = { y: 10, duration: 50, easing: quadIn };
   const outProps = { y: -10, duration: 100, easing: quadOut, delay: 50 };
   const dispatch = createEventDispatcher();
 
   function getLabel(value) {
-    return value ? (items.find(i => i.value === value) || {}).text : "";
+    return value ? (itemsProcessed.find(i => i.value === value) || {}).text : "";
   }
 
   $: selectedLabel = getLabel(value);
 
   function filterItems({ target }) {
-    filteredItems = items.filter(i =>
+    filteredItems = itemsProcessed.filter(i =>
       i.text.toLowerCase().includes(target.value.toLowerCase())
     );
   }
@@ -51,7 +70,7 @@
 
 <svelte:window on:click={() => (showList = false)} />
 
-<div class="cursor-pointer relative pb-4">
+<div class="{wrapperClasses} {c}">
   <slot name="select">
     <TextField
       select
@@ -62,8 +81,11 @@
         e.stopPropagation();
         showList = true;
       }}
+      on:click
       on:input={filterItems}
-      append={showList ? 'arrow_drop_up' : 'arrow_drop_down'} />
+      append="arrow_drop_down"
+      appendReverse={showList}
+    />
   </slot>
 
   {#if showList}

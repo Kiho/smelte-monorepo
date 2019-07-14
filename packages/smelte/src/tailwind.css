@@ -64,8 +64,6 @@ hr {
 
 .button {
   letter-spacing: 0.0892857143em;
-  transition: box-shadow 0.2s ease;
-  @apply py-2 px-4 uppercase text-sm font-medium;
 }
 
 caption,
@@ -96,5 +94,5 @@ html {
 }
 
 .code-inline {
-  @apply body-2 bg-teal-50 text-teal-900 rounded-sm p-1;
+  @apply body-2 bg-secondary-50 text-secondary-900 rounded-sm p-1;
 }

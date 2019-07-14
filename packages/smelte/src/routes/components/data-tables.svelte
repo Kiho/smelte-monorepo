@@ -1,0 +1,48 @@
+<script>
+  import DataTable from "components/DataTable";
+  import Code from "components/Code";
+  import table from "examples/table.txt";
+
+  let data = [];
+  let loading = true;
+
+  async function getData() {
+    loading = true;
+    const res = await fetch("data.json");
+    const body = await res.json();
+
+    data = body._embedded.episodes;
+
+    setTimeout(() => loading = false, 500);
+  }
+
+  getData();
+</script>
+
+<DataTable
+  {data}
+  {loading}
+  columns={[
+    { label: "ID", field: "id", class: "w-10", },
+    {
+      label: "Season/Episode",
+      value: (v) => `S${v.season}E${v.number}`,
+      class: "w-10"
+    },
+    { field: "name", class: "w-10" },
+    {
+      field: "summary",
+      value: v => v && v.summary ? v.summary : "",
+      class: "text-sm text-gray-700 caption w-full" },
+    {
+      field: "thumbnail",
+      value: (v) => v && v.image
+        ? `<img src="${v.image.medium.replace("http", "https")}" height="70" alt="${v.name}">`
+        : "",
+      class: "w-48",
+      sortable: false,
+    }
+  ]}
+/>
+
+<Code code={table} />

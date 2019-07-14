@@ -1,7 +1,7 @@
 <script>
   import { fly } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
-  import { Scrim } from "components/Util";
+  import { Scrim } from "../Util";
 
   export let right = false;
   export let persistent = false;
@@ -9,7 +9,7 @@
   export let showMobile = false;
   export let showDesktop = true;
   export let breakpoint = "";
-  export let asideClasses = "fixed h-full top-0 md:mt-16 w-auto drawer";
+  export let asideClasses = "aside fixed top-0 md:mt-16 w-auto drawer overflow-hidden";
   export let navClasses = `h-full bg-white absolute flex w-auto z-20 drawer
      pointer-events-auto overflow-y-scroll`;
 
@@ -44,6 +44,9 @@
 </script>
 
 <style>
+  .aside {
+    height: calc(100% - 4rem);
+  }
   .drawer {
     min-width: 216px;
   }
@@ -59,6 +62,8 @@
     class:left-0={!right}
     class:pointer-events-none={!showWithScrim}
     class:z-50={showWithScrim}
+    class:elevation-4={elevation}
+    class:bordered={!elevation}
     class:z-20={!showWithScrim}
     on:click={() => (showMobile = false)}>
     {#if showWithScrim}
@@ -67,8 +72,6 @@
     <nav
       role="navigation"
       class={navClasses}
-      class:elevation-4={elevation}
-      class:bordered={!elevation}
       transition:fly={transitionProps}>
       <div class="w-full">
         <slot />
