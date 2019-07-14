@@ -17,7 +17,21 @@ import Tabs from './tabs.svelte';
 import TextFields from './text-fields.svelte';
 
 export {
-  Buttons, Cards, Chips, Dialogs, DataTables, Images, Index, Lists, Menus, 
-  NavigationDrawers, ProgressIndicators, SelectionControls,
-  Selects, Sliders, Snackbars, Tabs, TextFields
-}
+  Buttons,
+  Cards,
+  Chips,
+  Dialogs,
+  DataTables,
+  Images,
+  Index,
+  Lists,
+  Menus,
+  NavigationDrawers,
+  ProgressIndicators,
+  SelectionControls,
+  Selects,
+  Sliders,
+  Snackbars,
+  Tabs,
+  TextFields,
+};

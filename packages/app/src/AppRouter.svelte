@@ -19,8 +19,10 @@
     const item = menu1.find(x => x.to === key);
     if (item) {
       Route = item.component;
+      console.log('Route', Route);
     } else {
       Route = Index;
+      console.log('Index', Route);
     }
   }
 

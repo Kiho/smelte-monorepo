@@ -9,6 +9,13 @@ const buildPalette = require("smelte/src/utils/color.js");
 
 const colors = {
   primary: "#b027b0",
+  secondary: "#009688",
+  error: "#f44336",
+  success: "#4caf50",
+  alert: "#ffeb3b",
+  blue: "#2196f3",
+
+  // You should keep only colors that you're using
   red: "#f44336",
   pink: "#e91e63",
   purple: "#9c27b0",
@@ -59,6 +66,7 @@ module.exports = {
     },
     colors: {
       white: "#fff",
+      "white-500": "#fff",
       black: "#000",
       transparent: "transparent",
 

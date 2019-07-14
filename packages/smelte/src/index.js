@@ -1,6 +1,7 @@
 import Button from "./components/Button";
 import Card from "./components/Card";
 import Chip from "./components/Chip";
+import Code from "./components/Code";
 import Dialog from "./components/Dialog";
 import Image from "./components/Image";
 import List from "./components/List";
@@ -25,6 +26,7 @@ export {
   Button,
   Card,
   Chip,
+  Code,
   Dialog,
   Image,
   Checkbox,

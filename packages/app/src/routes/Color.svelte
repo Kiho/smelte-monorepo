@@ -1,6 +1,6 @@
 <script>
-  import { TextField } from "smelte/src/components";
-  import { Code } from "smelte/src/components";
+  import { TextField } from "smelte";
+  import { Code } from "smelte";
 
   import ripple from "examples/ripple.txt";
 </script>
