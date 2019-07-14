@@ -11,14 +11,14 @@
     // import NavigationDrawer from "components/NavigationDrawer";
     // import ProgressLinear from "components/ProgressLinear";
 
-    import { AppBar } from "smelte/components";
-    import { Tabs } from "smelte/components";
-    import { Button } from "smelte/components";
-    import { Spacer } from "smelte/components/Util";
-    import { List } from "smelte/components";
-    import { ListItem } from "smelte/components";
-    import { NavigationDrawer } from "smelte/components";
-    import { ProgressLinear } from "smelte/components";
+    import { AppBar } from "smelte";
+    import { Tabs } from "smelte";
+    import { Button } from "smelte";
+    import { Spacer } from "smelte";
+    import { List } from "smelte";
+    import { ListItem } from "smelte";
+    import { NavigationDrawer } from "smelte";
+    import { ProgressLinear } from "smelte";
 
     import {
       right,
@@ -60,11 +60,7 @@
     function navigate(evt, to) {
         if (evt && evt.preventDefault) evt.preventDefault()
         // console.log('roadtrip.RouteData', roadtrip.RouteData);
-        if (item) {
-            dispatch('itemClick', event, item);
-        } else if (to) {            
-            roadtrip.goto(basePath + to);
-        }
+        roadtrip.goto(basePath + to);
     }
 
     export const menu = [
@@ -119,7 +115,7 @@
             <h6 class="p-6 ml-1 py-2 text-xs text-gray-900">Utilities</h6>
           {/if}
 
-          <a href={item.to}>
+          <a href={item.to} on:click='{event => navigate(event, item.to)}' >
             <ListItem
               selected={currentPath == item.to}
               {...item}

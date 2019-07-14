@@ -5,6 +5,7 @@ import Code from "./components/Code";
 import Dialog from "./components/Dialog";
 import Image from "./components/Image";
 import List from "./components/List";
+import ListItem from "./components/List/ListItem";
 import Icon from "./components/Icon";
 import Menu from "./components/Menu";
 import NavigationDrawer from "./components/NavigationDrawer";
@@ -20,7 +21,12 @@ import Tabs from "./components/Tabs";
 import TextField from "./components/TextField";
 import DataTable from "./components/DataTable";
 import Switch from "./components/Switch";
-import Spacer from "./components/Util";
+
+export {
+  Scrim,
+  Ripple,
+  Spacer
+} from "./components/Util";
 
 export {
   Button,
@@ -32,6 +38,7 @@ export {
   Checkbox,
   RadioButton,
   List,
+  ListItem,
   Menu,
   NavigationDrawer,
   Icon,
@@ -44,6 +51,5 @@ export {
   TextField,
   AppBar,
   DataTable,
-  Switch,
-  Spacer
+  Switch
 };

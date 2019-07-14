@@ -1,6 +1,6 @@
 <script>
     import { afterUpdate, onMount } from 'svelte';    
-    import { Button } from "smelte/components";
+    import { Button } from "smelte";
 
     import { DataGrid, FormGrid } from '../../formgrid';
     import Modal from '../app/modal.svelte';
