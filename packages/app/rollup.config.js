@@ -19,34 +19,8 @@ const mode = process.env.NODE_ENV || 'development';
 const dev = mode === 'development';
 
 console.log('mode', mode);
-const postcssPlugins = (purge = false) => {
-  return [
-    require('postcss-import')(),
-    require('postcss-url')(),
-    require('postcss-nesting')(),
-    require('postcss-input-range')(),
-    require('autoprefixer')(),
-    require('tailwindcss')('./tailwind.config.js'),
-    purge &&
-      require('cssnano')({
-        preset: 'default',
-      }),
-    purge &&
-      require('@fullhuman/postcss-purgecss')({
-        content: ['./**/*.svelte'],
-        extractors: [
-          {
-            extractor,
-            extensions: ['svelte'],
-          },
-        ],
-        whitelist: ['html', 'body', 'stroke-primary'],
-        // for Prismjs code highlighting
-        whitelistPatterns: [/language/, /namespace/, /token/],
-      }),
-  ].filter(Boolean);
-};
 
+const postcssPlugins = require("./postcss.config.js");
 const preprocess = getPreprocessor({
   transformers: {
     postcss: {

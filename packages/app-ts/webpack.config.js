@@ -18,49 +18,12 @@ const cssConfig = {
   ],
 };
 
-// const sveltPreprocess = autoPreprocess({
-//   postcss: true,
-//   scss: false,
-//   stylus: false,
-//   typescript: false,
-//   coffeescript: false,
-//   less: false,
-//   pug: false,
-// });
-
 console.log('mode', mode);
-const postcssPlugins = (purge = false) => {
-  return [
-    require('postcss-import')(),
-    require('postcss-url')(),
-    require('postcss-nesting')(),
-    require('postcss-input-range')(),
-    require('autoprefixer')(),
-    require('tailwindcss')('./tailwind.config.js'),
-    purge &&
-      require('cssnano')({
-        preset: 'default',
-      }),
-    purge &&
-      require('@fullhuman/postcss-purgecss')({
-        content: ['./**/*.svelte'],
-        extractors: [
-          {
-            extractor,
-            extensions: ['svelte'],
-          },
-        ],
-        whitelist: ['html', 'body', 'stroke-primary'],
-        // for Prismjs code highlighting
-        whitelistPatterns: [/language/, /namespace/, /token/],
-      }),
-  ].filter(Boolean);
-};
 
 const preprocess = getPreprocessor({
   transformers: {
     postcss: {
-      plugins: postcssPlugins()
+      plugins: require("./postcss.config.js")()
     }
   }
 });
