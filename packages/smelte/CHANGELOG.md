@@ -1,12 +1,18 @@
 # Smelte changelog
 
+## 0.0.12
+* Add tooltip
+* Add horizontal scroll to table
+
 ## 0.0.11
 * Finish autocomplete
 * Add focus events to selects
+* Fix scrim height
+* Mobile table view
+* Finish table footer
 
 ## 0.0.10
 * Fix nav drawer on mobile
-
 
 ## 0.0.9
 * Expose more classes
