@@ -11,8 +11,7 @@
     "fix:write": "prettier --config ./.prettierrc --ignore-path ./.prettierignore --write **/*.{js,svelte,css,html}",
     "make": "node ./bin/make.js",
     "lb": "lerna bootstrap --use-workspaces",
-    "postinstall": "rexreplace \"followSymlinks: false\" \"followSymlinks: true\" ./node_modules/watchpack/lib/DirectoryWatcher.js",
-    "stories": "start-storybook -c .storybook"
+    "postinstall": "rexreplace \"followSymlinks: false\" \"followSymlinks: true\" ./node_modules/watchpack/lib/DirectoryWatcher.js"
   },
   "dependencies": {
     "rexreplace": "^4.1.1"
@@ -21,7 +20,6 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
-    "@storybook/svelte": "^5.1.9",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "eslint": "^6.0.1",

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "build:auto": "rollup -c -w",
-    "serve": "sirv dist --single",
+    "serve": "sirv public --single",
     "serve:dev": "sirv public --dev --single",
     "dev": "run-p build:auto serve:dev"
   },
