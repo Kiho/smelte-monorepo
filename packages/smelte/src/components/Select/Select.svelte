@@ -6,31 +6,36 @@
   import TextField from "../TextField";
 
   export let items = [];
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let value = "";
   export let text = "";
   export let label = "";
+  export let selectedLabel = "";
   export let color = "primary";
   export let outlined = false;
   export let placeholder = "";
   export let hint = "";
   export let error = false;
   export let append = "";
+  export let dense = false;
   export let persistentHint = false;
   export let autocomplete = false;
   export let noUnderline = false;
   export let wrapperClasses = "cursor-pointer relative pb-4";
-  export let wrapperBaseClasses = i => i;
-  export let appendBaseClasses = i => i;
+  export let showList = false;
+  export let inputWrapperClasses = i => i;
+  export let appendClasses = i => i;
+  export let labelClasses = i => i;
+  export let inputClasses = i => i;
+  export let prependClasses = i => i;
 
   export let add = "";
   export let remove = "";
   export let replace = "";
 
-  let showList = false;
   let filteredItems = items;
   let itemsProcessed = [];
-  let selectedLabel = '';
 
   const props = {
     outlined,
@@ -45,8 +50,6 @@
     remove,
     replace,
     noUnderline,
-    wrapperBaseClasses,
-    appendBaseClasses,
   };
 
   function process(it) {
@@ -78,13 +81,18 @@
 
 <svelte:window on:click={() => (showList = false)} />
 
-<div class="{wrapperClasses} {c}">
+<div class="{wrapperClasses} {className}">
   <slot name="select">
     <TextField
       select
       {autocomplete}
       value={selectedLabel}
       {...props}
+      wrapperClasses={inputWrapperClasses}
+      {appendClasses}
+      {labelClasses}
+      {inputClasses}
+      {prependClasses}
       on:click={e => {
         e.stopPropagation();
         showList = true;
@@ -101,12 +109,11 @@
       <div
         class="list"
         on:click={() => (showList = false)}
-        in:fly={inProps}
-        out:fly={outProps}
         class:rounded-t-none={!outlined}>
         <List
           bind:value
           select
+          {dense}
           items={filteredItems}
           on:change={({ detail }) => {
             selectedLabel = getLabel(detail);

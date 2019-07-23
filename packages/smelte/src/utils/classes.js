@@ -9,12 +9,15 @@ export default function utils(color, defaultDepth = 500) {
 }
 
 export class ClassBuilder {
-  constructor() {
-    this.classes = "";
+  constructor(classes, defaultClasses) {
+    this.defaults =
+      typeof classes === "function" ? classes(defaultClasses) : classes;
+
+    this.classes = this.defaults;
   }
 
   flush() {
-    this.classes = "";
+    this.classes = this.defaults;
 
     return this;
   }
@@ -47,11 +50,31 @@ export class ClassBuilder {
     return this;
   }
 
-  add(className, cond = true) {
-    if (cond && className) {
-      this.classes += ` ${className} `;
-    }
+  add(className, cond = true, defaultValue) {
+    if (!cond || !className) return this;
 
-    return this;
+    switch (typeof className) {
+      case "string":
+      default:
+        this.classes += ` ${className} `;
+        return this;
+      case "function":
+        this.classes += ` ${className(defaultValue)} `;
+        return this;
+    }
   }
+}
+
+const defaultReserved = ["class", "add", "remove", "replace", "value"];
+
+export function filterProps(reserved, props) {
+  const r = [...reserved, ...defaultReserved];
+
+  return Object.keys(props).reduce(
+    (acc, cur) =>
+      cur.includes("$$") || cur.includes("Class") || reserved.includes(cur)
+        ? acc
+        : { ...acc, [cur]: props[cur] },
+    {}
+  );
 }

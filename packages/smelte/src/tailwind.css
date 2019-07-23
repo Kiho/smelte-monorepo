@@ -73,11 +73,7 @@ caption,
   display: inline-block;
 }
 
-input:focus,
-button:focus,
-textarea:focus,
-select:focus,
-li:focus {
+button:focus, input:focus, li:focus, div:focus, textarea:focus {
   @apply outline-none;
 }
 
@@ -96,4 +92,13 @@ html {
 
 .code-inline {
   @apply body-2 bg-secondary-50 text-secondary-900 rounded-sm p-1;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
 }

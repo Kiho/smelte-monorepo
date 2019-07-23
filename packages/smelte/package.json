@@ -1,7 +1,7 @@
 {
   "name": "smelte",
   "description": "UI framework for Svelte using Tailwind CSS",
-  "version": "0.0.12",
+  "version": "0.0.26",
   "scripts": {
     "dev": "sapper dev -p 7777",
     "build": "rollup -c --config rollup-publish.config.js",
@@ -22,18 +22,15 @@
   ],
   "files": [
     "dist",
-    "src"
+    "src",
+    "tailwind.config.js"
   ],
   "module": "dist/module.js",
   "main": "dist/index.js",
   "browserslist": "last 3 version",
   "svelte": "src/index.js",
   "dependencies": {
-    "postcss-nesting": "^7.0.0",
-    "svelte": "3.6.5",
     "svelte-waypoint": "^0.1.2",
-    "tailwindcss": "^1.0.1",
-    "tailwindcss-elevation": "^0.3.0",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
@@ -54,6 +51,7 @@
     "postcss": "^7.0.16",
     "postcss-import": "^12.0.1",
     "postcss-input-range": "^4.0.0",
+    "postcss-nesting": "^7.0.0",
     "postcss-url": "^8.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
@@ -72,8 +70,11 @@
     "rollup-plugin-string": "^3.0.0",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^4.0.4",
-    "sapper": "^0.27.0",
+    "sapper": "^0.27.4",
     "sirv": "^0.4.0",
-    "svelte-preprocess": "^2.9.0"
+    "svelte": "^3.6.7",
+    "svelte-preprocess": "^2.9.0",
+    "tailwindcss": "^1.0.1",
+    "tailwindcss-elevation": "^0.3.0"
   }
 }

@@ -1,5 +1,46 @@
 # Smelte changelog
 
+# 0.0.26
+* Passing escaped props to text fields and buttons
+
+# 0.0.25
+* Fix class builder calls on wrapper/append/prepend in text field
+
+# 0.0.24
+* Expose text field classes in select
+* Improve custom select example
+
+# 0.0.23
+* Add example with custom multiselect
+* Few refactoring fixes
+
+## 0.0.22
+* Fix styles on the data table
+* Refactor style function props to accept strings,
+  eg. `<Button outlinedClasses="bg-transparent border border-solid text-green-500">` means the same as
+  `<Button outlinedClasses={c => c + " text-green-500">`
+
+## 0.0.20
+* Fix icons absolute position
+
+## 0.0.19
+* Remove Code from default export
+* Move tailwind elevation to deps
+
+## 0.0.18
+* Move tinycolor2 to dependencies
+
+## 0.0.17
+* Fix dependencies
+
+## 0.0.16
+* Add fonts search bar example
+* Fix focused select color
+* Rename `c` class prop to `class`
+
+## 0.0.15
+* Fix purgecss settings
+
 ## 0.0.12
 * Add tooltip
 * Add horizontal scroll to table

@@ -1,11 +1,12 @@
 <script>
   import { fly } from "svelte/transition";
   import { quadOut } from "svelte/easing";
-  import utils, { ClassBuilder } from "../../utils/classes.js";
+  import utils, { ClassBuilder, filterProps } from "../../utils/classes.js";
 
   import Icon from "../Icon";
 
-  export let c = "";
+  let className = "";
+  export {className as class};
   export let outlined = false;
   export let value = null;
   export let label = "";
@@ -13,6 +14,7 @@
   export let hint = "";
   export let error = false;
   export let append = "";
+  export let prepend = "";
   export let persistentHint = false;
   export let textarea = false;
   export let rows = 5;
@@ -20,24 +22,28 @@
   export let autocomplete = false;
   export let noUnderline = false;
   export let appendReverse = false;
+  export let prependReverse = false;
   export let color = "primary";
-
+  // for outlined button label
+  export let bgColor = "white";
+  export let iconClasses = "";
+  export let small = false;
 
   let labelDefault = `pt-4 absolute top-0 label-transition block pb-2 px-4 pointer-events-none cursor-text`;
   let inputDefault = `transition pb-2 pt-6 px-4 rounded-t text-black w-full`;
   let wrapperDefault = "mt-2 relative pb-6 text-gray-600" + ((select || autocomplete) ? " select" : "");
-  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none";
+  let appendDefault = "absolute right-0 top-0 pb-2 pr-4 pt-4 pointer-events-none text-gray-700";
+  let prependDefault = "absolute left-0 top-0 pointer-events-none text-xs text-gray-700";
 
   export let add = "";
   export let remove = "";
   export let replace = "";
 
-  const identity = i => i;
-
-  export let inputBaseClasses = identity;
-  export let labelBaseClasses = identity;
-  export let wrapperBaseClasses = identity;
-  export let appendBaseClasses = identity;
+  export let labelClasses = labelDefault;
+  export let inputClasses = inputDefault;
+  export let wrapperClasses = wrapperDefault;
+  export let appendClasses = appendDefault;
+  export let prependClasses = prependDefault;
 
   const {
     bg,
@@ -46,13 +52,18 @@
     caret,
   } = utils(color);
 
-  const l = new ClassBuilder();
-  const i = new ClassBuilder();
+  const l = new ClassBuilder(labelClasses, labelDefault);
+  const i = new ClassBuilder(inputClasses, inputDefault);
+  const w = new ClassBuilder(wrapperClasses, wrapperDefault);
+  const a = new ClassBuilder(appendClasses, appendDefault);
+  const p = new ClassBuilder(prependClasses, prependDefault);
 
   let focused = false;
-  let labelClasses = "";
-  let inputClasses = "";
-  let wrapperClasses = "";
+  let lClasses = "";
+  let iClasses = "";
+  let wClasses = "";
+  let aClasses = "";
+  let pClasses = "";
 
   function toggleFocused() {
     focused = !focused;
@@ -61,35 +72,59 @@
   $: showHint = error || (persistentHint ? hint : focused && hint);
   $: labelOnTop = placeholder || focused || value;
 
-  $: {
-    labelClasses = l
+  $: lClasses = l
       .flush()
-      .add(labelBaseClasses(labelDefault))
       .add(txt(), focused && !error)
       .add('label-top text-xs', labelOnTop)
       .remove('pt-4 pb-2 px-4 px-1 pt-0', labelOnTop && outlined)
-      .add('ml-3 p-1 pt-0 mt-0 bg-white', labelOnTop && outlined)
+      .add(`ml-3 p-1 pt-0 mt-0 bg-${bgColor}`, labelOnTop && outlined)
+      .remove('px-4', prepend)
+      .add('pr-4 pl-6', prepend)
       .get();
- 
-    inputClasses = i
+
+  $: iClasses = i
       .flush()
-      .add(inputBaseClasses(inputDefault))
+      .add(className)
       .remove('pt-6 pb-2', outlined)
       .add('border rounded bg-transparent py-4 transition', outlined)
       .add('border-error-500 caret-error-500', error)
+      .remove(caret(), error)
+      .add(caret(), !error)
       .add(border(), focused && !error)
       .add('border-gray-600', !error && !focused)
       .add('bg-gray-100', !outlined)
       .add('bg-gray-300', focused && !outlined)
+      .remove('px-4', prepend)
+      .add('pr-4 pl-6', prepend)
       .add(add)
       .remove(remove)
       .replace(replace)
       .get();
     
-    wrapperClasses = (new ClassBuilder())
-      .add(wrapperBaseClasses(wrapperDefault))
-      .get();
-  }
+  $: wrapperClasses, wClasses = (new ClassBuilder(wrapperClasses, wrapperDefault)).get();
+  $: appendClasses, aClasses = (new ClassBuilder(appendClasses, appendDefault)).get();
+  $: prependClasses, pClasses = (new ClassBuilder(prependClasses, prependDefault)).get();
+
+  const props = filterProps([
+    'outlined',
+    'label',
+    'placeholder',
+    'hint',
+    'error',
+    'append',
+    'prepend',
+    'persistentHint',
+    'textarea',
+    'rows',
+    'select',
+    'autocomplete',
+    'noUnderline',
+    'appendReverse',
+    'prependReverse',
+    'color',
+    'bgColor',
+    'small',
+  ], $$props);
 </script>
 
 <style>
@@ -111,23 +146,22 @@
 
 <svelte:window on:click={() => (select ? (focused = false) : null)} />
 
-<div
-  class={wrapperClasses}
->
+<div class={wClasses}>
   <div class="relative" class:text-error-500={error}>
-    <label class={labelClasses}>
+    <label class={lClasses}>
       {label}
     </label>
 
-    <div class={appendBaseClasses(appendDefault)}>
+    <div class={aClasses}>
       <slot name="append" />
     </div>
 
     {#if append}
-      <div class={appendBaseClasses(appendDefault)}>
+      <div class={aClasses}>
         <Icon
           reverse={appendReverse}
-          c={focused ? txt() : 'text-gray-700'}>
+          class="{focused ? txt() : ''} {iconClasses}"
+        >
           {append}
         </Icon>
       </div>
@@ -136,7 +170,7 @@
     {#if (!textarea && !select) || autocomplete}
       <input
         aria-label={label}
-        class={inputClasses}
+        class={iClasses}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         on:blur
@@ -145,24 +179,26 @@
         on:input
         on:click
         on:focus
+        {...props}
         placeholder={!value ? placeholder : ''} />
     {:else if textarea && !select}
       <textarea
         {rows}
         aria-label={label}
-        class={inputClasses}
+        class={iClasses}
         on:change
         on:input
         on:click
         on:focus
         on:blur
         bind:value
+        {...props}
         on:focus={toggleFocused}
         on:blur={toggleFocused}
         placeholder={!value ? placeholder : ''} />
     {:else if select && !autocomplete}
       <div
-        class="select {inputClasses}"
+        class="select {iClasses}"
         on:click={toggleFocused}
         on:change
         on:input
@@ -170,6 +206,21 @@
         on:blur
         on:focus>
         {value}
+      </div>
+    {/if}
+
+    <div class={pClasses}>
+      <slot name="prepend" />
+    </div>
+
+    {#if prepend}
+      <div class={pClasses}>
+        <Icon
+          reverse={prependReverse}
+          class="{focused ? txt() : ''} {iconClasses}"
+        >
+          {prepend}
+        </Icon>
       </div>
     {/if}
 
