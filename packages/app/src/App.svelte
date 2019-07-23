@@ -20,9 +20,10 @@
     showNav,
     showNavMobile,
     breakpoint
-  } from "./stores.js";
+  } from "./stores";
   import AppRouter from './AppRouter.svelte';
   import { menu1, menu2, topMenu } from './menu';
+  import { basePath } from './config';
 
   // const { page } = stores();
 
@@ -47,8 +48,8 @@
 {/each}
 
 <AppBar>
-  <a href="." class="px-2 md:px-8 flex items-center">
-    <img src="/logo.png" alt="Smelte logo" width="44" />
+  <a href="{basePath}/." class="px-2 md:px-8 flex items-center">
+    <img src="{basePath}/logo.png" alt="Smelte logo" width="44" />
     <h6 class="pl-3 text-white tracking-widest font-thin text-lg">SMELTE</h6>
   </a>
   <Spacer />
@@ -61,7 +62,7 @@
       on:click={() => showNavMobile.set(!$showNavMobile)} />
   </div>
   <a href="https://github.com/matyunya/smelte" class="px-4">
-    <img src="/github.png" alt="Github Smelte" width="24" height="24" />
+    <img src="{basePath}/github.png" alt="Github Smelte" width="24" height="24" />
   </a>
 </AppBar>
 
@@ -80,7 +81,7 @@
       <h6 class="p-6 ml-1 pb-2 text-xs text-gray-900">Components</h6>
       <List items={menu}>
         <span slot="item" let:item class="cursor-pointer">
-          {#if item.to === '/typography'}
+          {#if item.to === basePath + '/typography'}
             <hr />
             <h6 class="p-6 ml-1 py-2 text-xs text-gray-900">Utilities</h6>
           {/if}

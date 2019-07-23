@@ -1,6 +1,6 @@
 <script>
   import TextField from "components/TextField";
-  import Code from "components/Code";
+  import Code from "../../Code.svelte";
 
   import textFields from "examples/text-fields.txt";
 </script>

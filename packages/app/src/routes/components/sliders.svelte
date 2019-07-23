@@ -1,6 +1,6 @@
 <script>
   import Slider from "components/Slider";
-  import Code from "components/Code";
+  import Code from "../../Code.svelte";
   import Checkbox from "components/Checkbox";
 
   let value = 0;

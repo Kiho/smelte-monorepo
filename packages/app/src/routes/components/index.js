@@ -15,6 +15,7 @@ import Sliders from './sliders.svelte';
 import Snackbars from './snackbars.svelte';
 import Tabs from './tabs.svelte';
 import TextFields from './text-fields.svelte';
+import Tooltips from './tooltips.svelte';
 
 export {
   Buttons,
@@ -34,4 +35,5 @@ export {
   Snackbars,
   Tabs,
   TextFields,
+  Tooltips,
 };
