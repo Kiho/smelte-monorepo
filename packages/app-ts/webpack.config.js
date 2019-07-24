@@ -3,18 +3,17 @@ var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const getPreprocessor = require('svelte-preprocess');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const extractor = require('../smelte/src/utils/css-extractor.js');
+const postcssPlugins = require("./postcss.config.js");
+
 const mode = process.env.NODE_ENV || 'development';
 const isDevBuild = mode !== 'production';
 
 const cssConfig = {
   test: /\.(sa|sc|c)ss$/,
-  exclude: /node_modules/,
   use: [
-    'isomorphic-style-loader',
     MiniCssExtractPlugin.loader,
     'css-loader',
-    'postcss-loader',
+    { loader: 'postcss-loader', options: { extract: true, plugins: postcssPlugins(!isDevBuild) } },
   ],
 };
 
@@ -23,7 +22,7 @@ console.log('mode', mode);
 const preprocess = getPreprocessor({
   transformers: {
     postcss: {
-      plugins: require("./postcss.config.js")()
+      plugins: postcssPlugins()
     }
   }
 });
@@ -39,7 +38,7 @@ module.exports = {
   },
   mode,
   module: {
-    rules: [
+    rules: [      
       cssConfig,
       {
         test: /\.svelte$/,
@@ -48,13 +47,13 @@ module.exports = {
             preprocess,
           } 
         },
-        exclude: ['/node_modules/', '/index.svelte']
+        exclude: ['/node_modules/']
       },
       { 
         test: /\.ts$/, 
         include: /src/, 
         use: 'ts-loader'
-      },
+      },      
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
@@ -66,9 +65,8 @@ module.exports = {
     extensions: ['.ts', '.mjs', '.js', '.json', '.svelte'],
     mainFields: ['svelte', 'module', 'main'],
     alias: {
-        smelte: path.resolve(__dirname, '../smelte/src'),
-        components: path.resolve(__dirname, '../smelte/src/components'),
-        utils: path.resolve(__dirname, '../smelte/src/utils')
+      components: path.resolve(__dirname, '../smelte/src/components'),
+      utils: path.resolve(__dirname, '../smelte/src/utils')
     }
   },
   performance: {
@@ -77,10 +75,6 @@ module.exports = {
 
   plugins: [
     new MiniCssExtractPlugin('main.css'),
-    // new webpack.optimize.SplitChunksPlugin({
-    //   name: "formgrid",
-    //   minChunks: Infinity,
-    // }),
   ]
 }
 
@@ -92,12 +86,12 @@ if (!isDevBuild) {
     }),
   ]);
   module.exports.optimization = {
-    minimize: true,
-    minimizer: [
-      new UglifyJSPlugin({
-        sourceMap: false,
-      })
-    ]
+    // minimize: true,
+    // minimizer: [
+    //   new UglifyJSPlugin({
+    //     sourceMap: false,
+    //   })
+    // ]
   }
 } else {
   module.exports.devtool = '#source-map';
